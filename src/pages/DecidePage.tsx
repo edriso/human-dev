@@ -140,7 +140,7 @@ export function DecidePage() {
         </div>
       )}
 
-      <div className="mt-8">
+      <div className="mt-8 overflow-x-clip">
         <AnimatePresence mode="wait">
           {done ? (
             <Result key="result" answers={answers} onRestart={restart} />

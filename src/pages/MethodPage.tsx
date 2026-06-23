@@ -173,27 +173,35 @@ export function MethodPage() {
           </AnimatePresence>
 
           {/* Pager */}
-          <div className="mt-10 flex items-center justify-between border-t border-border pt-6">
+          <div className="mt-10 flex items-center justify-between gap-3 border-t border-border pt-6">
             <button
               disabled={activeIndex === 0}
               onClick={() => setActiveId(stages[activeIndex - 1].id)}
-              className="text-sm text-muted enabled:hover:text-fg disabled:opacity-30"
+              className="inline-flex min-w-0 items-center gap-1.5 text-sm text-muted enabled:hover:text-fg disabled:opacity-30"
             >
-              ← {activeIndex > 0 ? stages[activeIndex - 1].title : ''}
+              <span aria-hidden>←</span>
+              <span className="hidden truncate sm:inline">
+                {activeIndex > 0 ? stages[activeIndex - 1].title : ''}
+              </span>
+              {activeIndex > 0 && <span className="sm:hidden">Back</span>}
             </button>
             {activeIndex < stages.length - 1 ? (
               <button
                 onClick={() => setActiveId(stages[activeIndex + 1].id)}
-                className="inline-flex items-center gap-1.5 rounded-lg bg-surface-2 px-4 py-2 text-sm font-medium text-fg hover:bg-surface-3"
+                className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-surface-2 px-4 py-2 text-sm font-medium text-fg hover:bg-surface-3"
               >
-                Next: {stages[activeIndex + 1].title} <ArrowRight className="size-4" />
+                <span className="sm:hidden">Next</span>
+                <span className="hidden sm:inline">Next: {stages[activeIndex + 1].title}</span>
+                <ArrowRight className="size-4" />
               </button>
             ) : (
               <Link
                 to="/patterns"
-                className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-ink"
+                className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-ink"
               >
-                Explore the patterns <ArrowRight className="size-4" />
+                <span className="hidden sm:inline">Explore the patterns</span>
+                <span className="sm:hidden">Patterns</span>
+                <ArrowRight className="size-4" />
               </Link>
             )}
           </div>

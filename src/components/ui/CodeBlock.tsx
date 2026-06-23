@@ -47,18 +47,18 @@ export function CodeBlock({ code, lang = 'tsx', title, className }: CodeBlockPro
         className,
       )}
     >
-      <div className="flex items-center justify-between border-b border-border/70 bg-surface-2/60 px-4 py-2">
-        <div className="flex items-center gap-1.5">
-          <span className="size-2.5 rounded-full bg-rose/70" />
-          <span className="size-2.5 rounded-full bg-amber/70" />
-          <span className="size-2.5 rounded-full bg-emerald/70" />
+      <div className="flex items-center justify-between gap-3 border-b border-border/70 bg-surface-2/60 px-4 py-2">
+        <div className="flex min-w-0 items-center gap-1.5">
+          <span className="size-2.5 shrink-0 rounded-full bg-rose/70" />
+          <span className="size-2.5 shrink-0 rounded-full bg-amber/70" />
+          <span className="size-2.5 shrink-0 rounded-full bg-emerald/70" />
           {title && (
-            <span className="ml-3 font-mono text-xs text-muted">{title}</span>
+            <span className="ml-3 truncate font-mono text-xs text-muted">{title}</span>
           )}
         </div>
         <button
           onClick={copy}
-          className="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs text-faint transition-colors hover:bg-surface-3 hover:text-fg"
+          className="flex shrink-0 items-center gap-1.5 rounded-md px-2 py-1 text-xs text-faint transition-colors hover:bg-surface-3 hover:text-fg"
           aria-label="Copy code"
         >
           {copied ? (

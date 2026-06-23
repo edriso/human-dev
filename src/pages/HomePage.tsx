@@ -32,7 +32,7 @@ function Hero() {
           <Badge tone="primary">
             <Sparkles className="size-3.5" /> Architecture, for the AI-era junior
           </Badge>
-          <h1 className="mt-6 text-balance font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
+          <h1 className="mt-6 text-balance font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
             Just like you vibe the code,
             <br />
             <span className="text-gradient">vibe the architecture.</span>
