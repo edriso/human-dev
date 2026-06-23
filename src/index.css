@@ -1,0 +1,123 @@
+@import 'tailwindcss';
+
+/* ----------------------------------------------------------------------------
+   Vibe the Architecture — design tokens
+   A blueprint-meets-devtool aesthetic: deep ink, violet primary, warm amber
+   mentor accent, emerald "go" and rose "stop / one-way door" signals.
+---------------------------------------------------------------------------- */
+@theme {
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+
+  --color-ink: #0a0a11;
+  --color-surface: #12121c;
+  --color-surface-2: #1a1a28;
+  --color-surface-3: #232336;
+  --color-border: #2b2b40;
+  --color-border-strong: #3a3a55;
+
+  --color-fg: #ecedf6;
+  --color-muted: #9b9cb8;
+  --color-faint: #6f7090;
+
+  --color-primary: #8b7cff;
+  --color-primary-soft: #a99dff;
+  --color-amber: #ffb84d;
+  --color-emerald: #3ddc97;
+  --color-rose: #ff6b8a;
+  --color-cyan: #5cc8e6;
+
+  --radius-xl: 1.25rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-ink);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* Subtle blueprint grid + a soft violet glow up top */
+    background-image:
+      radial-gradient(60rem 40rem at 50% -10%, rgba(139, 124, 255, 0.13), transparent 70%),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size:
+      100% 100%,
+      40px 40px,
+      40px 40px;
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: rgba(139, 124, 255, 0.35);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-ink);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-surface-3);
+    border-radius: 999px;
+    border: 3px solid var(--color-ink);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-border-strong);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(120deg, var(--color-primary-soft), var(--color-cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glass {
+    background: color-mix(in oklab, var(--color-surface) 75%, transparent);
+    backdrop-filter: blur(12px);
+  }
+
+  .card-hover {
+    transition:
+      transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-border-strong);
+    box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.8);
+  }
+
+  .rtl {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
+  }
+}
